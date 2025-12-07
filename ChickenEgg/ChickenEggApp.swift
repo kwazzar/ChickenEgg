@@ -9,9 +9,21 @@ import SwiftUI
 
 @main
 struct ChickenEggApp: App {
+    @StateObject private var router = RouterNav()
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            VStack {
+                switch router.startApp {
+                case .splashScreen:
+                    SplashScreen()
+                        .transition(.opacity)
+                case .rootView:
+                    ContentView()
+                        .transition(.opacity)
+                }
+            }
+            .environmentObject(router)
         }
     }
 }
