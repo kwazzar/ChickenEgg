@@ -9,10 +9,9 @@ import SwiftUI
 import Combine
 import Foundation
 
-final class RouterNav: ObservableObject {
+final class Router: ObservableObject {
     @Published var path: [AppRoute] = []
 //    @Published var blockTabBar = false
-//    @Published var selectedTab: Tab = .home
     @Published var startApp: StartApp = .splashScreen
 
     func navigate(to route: AppRoute) {

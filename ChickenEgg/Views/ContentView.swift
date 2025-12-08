@@ -8,25 +8,27 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject private var router = RouterNav()
+    @EnvironmentObject var router: Router
 
     var body: some View {
         NavigationStack(path: $router.path) {
             VStack {
                 HomeView()
             }
-            .navigationDestination(for: RouterNav.AppRoute.self) { route in
+            .navigationDestination(for: Router.AppRoute.self) { route in
                 switch route {
                 case .settings:
                     EmptyView()
-                        .foregroundColor(.blue)
+                        .background(.blue)
                 }
             }
         }
     }
 }
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(Router())
     }
 }

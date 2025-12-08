@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct ChickenEggApp: App {
-    @StateObject private var router = RouterNav()
+    @StateObject private var router = Router()
 
     var body: some Scene {
         WindowGroup {
