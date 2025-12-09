@@ -18,12 +18,25 @@ struct ChickenEggApp: App {
                 case .splashScreen:
                     SplashScreen()
                         .transition(.opacity)
+                        .onAppear {
+                            handleSplashScreenAppearance()
+                        }
                 case .rootView:
                     ContentView()
                         .transition(.opacity)
                 }
             }
             .environmentObject(router)
+        }
+    }
+}
+
+private extension ChickenEggApp {
+     func handleSplashScreenAppearance() {
+        Task {
+            try? await Task.sleep(for: .seconds(4.2))
+
+            router.startApp = .rootView
         }
     }
 }
